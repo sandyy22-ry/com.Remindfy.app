@@ -1,0 +1,96 @@
+<ion-header class="modal-header" collapse="condense">
+  <ion-toolbar>
+    <div class="header-top">
+      <div class="drag-handle"></div>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <ion-title class="modal-title">Pengingat Baru</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modal-content" scrollY="false">
+  <form (ngSubmit)="handleSubmit()" class="reminder-form">
+    <div class="form-group">
+      <label class="form-label">Judul Kegiatan *</label>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Masukkan judul kegiatan"
+        [(ngModel)]="reminderForm.title"
+        name="title"
+        #reminderTitleInput
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Waktu *</label>
+      <div class="time-input-row">
+        <input
+          type="time"
+          class="form-input"
+          [(ngModel)]="reminderForm.time"
+          name="time"
+        />
+        <div class="quick-buttons">
+          <button type="button" class="quick-btn" title="Tambah 5 menit" (click)="addMinutes(5)">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>+5</span>
+          </button>
+          <button type="button" class="quick-btn" title="Tambah 10 menit" (click)="addMinutes(10)">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>+10</span>
+          </button>
+          <button type="button" class="quick-btn" title="Tambah 15 menit" (click)="addMinutes(15)">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>+15</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Kategori</label>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Contoh: Pekerjaan, Pribadi"
+        [(ngModel)]="reminderForm.category"
+        name="category"
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Notifikasi awal</label>
+      <select class="form-input" [(ngModel)]="reminderForm.preAlertMinutes" name="preAlertMinutes">
+        <option [ngValue]="5">5 menit sebelum</option>
+        <option [ngValue]="10">10 menit sebelum</option>
+        <option [ngValue]="15">15 menit sebelum</option>
+      </select>
+    </div>
+
+    <div class="form-group toggle-group">
+      <label class="form-label">Ulangi Setiap Hari</label>
+      <ion-toggle
+        [(ngModel)]="reminderForm.repeatDaily"
+        name="repeatDaily"
+        color="primary"
+      ></ion-toggle>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">
+        <ion-icon name="checkmark"></ion-icon>
+        Simpan
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+        Batal
+      </button>
+    </div>
+  </form>
+</ion-content>
+

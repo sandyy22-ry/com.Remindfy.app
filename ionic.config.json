@@ -1,0 +1,7 @@
+{
+  "name": "Remindfy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

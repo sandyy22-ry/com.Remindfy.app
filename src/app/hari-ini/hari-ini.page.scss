@@ -1,0 +1,160 @@
+:host {
+  display: block;
+}
+
+.page-header ion-toolbar {
+  --background: #000;
+  --color: #f5f5f7;
+  --border-style: none;
+}
+
+.hari-content {
+  --background: #000;
+  color: #f5f5f7;
+}
+
+.hari-shell {
+  padding: 18px 16px 28px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.summary-card {
+  background: linear-gradient(145deg, #1f6fff 0%, #0a84ff 55%, #0066df 100%);
+  border-radius: 24px;
+  padding: 18px 18px 16px;
+  color: #fff;
+  margin-bottom: 18px;
+  box-shadow: 0 16px 34px rgba(10, 132, 255, 0.28);
+}
+
+.summary-label,
+.summary-card small {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.summary-card h2 {
+  margin: 10px 0 8px;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.list-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 2px 10px;
+}
+
+.section-kicker {
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: rgba(245, 245, 247, 0.78);
+}
+
+.list-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #f5f5f7;
+}
+
+.section-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(10, 132, 255, 0.16);
+  color: #d7e8ff;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.reminder-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  background: transparent;
+}
+
+.reminder-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 14px 14px 12px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #1d2026 0%, #171a20 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+}
+
+.reminder-check {
+  margin: 0;
+  --size: 22px;
+}
+
+.reminder-copy {
+  min-width: 0;
+}
+
+.reminder-copy h3 {
+  margin: 0 0 4px;
+  font-size: 1.03rem;
+  line-height: 1.25;
+  color: #f5f5f7;
+}
+
+.reminder-copy h3.done {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.reminder-copy p {
+  margin: 0;
+  color: rgba(245, 245, 247, 0.72);
+  font-size: 0.93rem;
+}
+
+.item-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.item-actions ion-badge {
+  margin-right: 2px;
+}
+
+.empty-state {
+  margin-top: 18px;
+  padding: 28px 18px;
+  text-align: center;
+  border-radius: 22px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  background: rgba(26, 27, 32, 0.68);
+  color: #f5f5f7;
+}
+
+.empty-state ion-icon {
+  font-size: 2rem;
+  color: #7aa8ff;
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #f5f5f7;
+}
+
+.empty-state p {
+  margin: 0;
+  color: rgba(245, 245, 247, 0.72);
+  line-height: 1.5;
+}

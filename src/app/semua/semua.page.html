@@ -1,0 +1,76 @@
+<ion-header [translucent]="true" class="semua-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Daftar"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="primary" aria-label="Menu lainnya">
+        <ion-icon name="ellipsis-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" color="primary">
+        Selesai
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="semua-content">
+  <div class="semua-shell">
+    <h1>Semua</h1>
+
+    <section class="group-block">
+      <h2>Pengingat</h2>
+      <p class="summary-text">{{ totalCount }} pengingat tersimpan</p>
+
+      <form class="editor-row" (ngSubmit)="addFromSemua()">
+        <div class="editor-main">
+          <ion-input
+            class="title-input"
+            placeholder="Judul pengingat"
+            name="title"
+            [(ngModel)]="form.title"
+          ></ion-input>
+
+          <ion-input
+            class="note-input"
+            placeholder="Tambah Catatan"
+            name="notes"
+            [(ngModel)]="form.notes"
+          ></ion-input>
+        </div>
+
+        <div class="editor-side">
+          <ion-input
+            class="time-input"
+            type="time"
+            name="time"
+            [(ngModel)]="form.time"
+          ></ion-input>
+          <ion-button type="submit" fill="solid" color="warning" class="save-inline" [disabled]="!form.title.trim()">
+            Simpan
+          </ion-button>
+        </div>
+      </form>
+
+      <ion-list class="all-list" lines="none" *ngIf="reminders.length > 0">
+        <ion-item class="all-item" *ngFor="let reminder of reminders">
+          <ion-thumbnail slot="start" class="activity-thumb" *ngIf="reminder.photoDataUrl">
+            <img [src]="reminder.photoDataUrl || ''" alt="Foto kegiatan {{ reminder.title }}" />
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{ reminder.title }}</h3>
+            <p>{{ reminder.time }} · {{ reminder.category || 'Umum' }}</p>
+          </ion-label>
+          <ion-badge slot="end" [color]="reminder.doneDate ? 'success' : 'medium'">
+            {{ reminder.doneDate ? 'Selesai' : 'Aktif' }}
+          </ion-badge>
+        </ion-item>
+      </ion-list>
+
+      <div class="empty-text" *ngIf="reminders.length === 0">
+        Belum ada pengingat. Tambahkan pengingat pertama kamu.
+      </div>
+    </section>
+  </div>
+</ion-content>

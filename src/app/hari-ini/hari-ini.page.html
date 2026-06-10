@@ -1,0 +1,56 @@
+<ion-header [translucent]="true" class="page-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Hari Ini</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="hari-content">
+  <div class="hari-shell">
+    <section class="summary-card">
+      <p class="summary-label">Total pengingat hari ini</p>
+      <h2>{{ reminders.length }}</h2>
+      <small>{{ completedCount }} selesai</small>
+    </section>
+
+    <section class="list-header">
+      <div>
+        <p class="section-kicker">Aktivitas</p>
+        <h3>Daftar hari ini</h3>
+      </div>
+      <span class="section-chip">{{ reminders.length }} item</span>
+    </section>
+
+    <section class="reminder-list" *ngIf="reminders.length > 0; else emptyState">
+      <article *ngFor="let reminder of reminders" class="reminder-card">
+        <ion-checkbox
+          class="reminder-check"
+          [checked]="isDone(reminder)"
+          (ionChange)="toggleDone(reminder.id)"
+        ></ion-checkbox>
+
+        <div class="reminder-copy">
+          <h3 [class.done]="isDone(reminder)">{{ reminder.title }}</h3>
+          <p>{{ reminder.time }}</p>
+        </div>
+
+        <div class="item-actions">
+          <ion-badge color="primary">{{ reminder.time }}</ion-badge>
+          <ion-button fill="clear" color="danger" aria-label="Hapus pengingat" (click)="removeReminder(reminder.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </article>
+    </section>
+
+    <ng-template #emptyState>
+      <div class="empty-state">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <h3>Belum ada pengingat hari ini</h3>
+        <p>Tambahkan jadwal baru dari halaman utama untuk mulai mengisi daftar hari ini.</p>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

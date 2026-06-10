@@ -1,0 +1,80 @@
+<ion-header [translucent]="true" class="scheduled-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Daftar"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="primary" aria-label="Menu lainnya">
+        <ion-icon name="ellipsis-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="scheduled-content">
+  <div class="scheduled-shell">
+    <section class="calendar-card">
+      <div class="calendar-header">
+        <h1 class="screen-title">Kalender</h1>
+        <ion-button fill="clear" size="small" class="today-button" (click)="goToToday()">
+          Hari ini
+        </ion-button>
+      </div>
+
+      <div class="month-switcher">
+        <ion-button fill="clear" class="month-nav" aria-label="Bulan sebelumnya" (click)="previousMonth()">
+          <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+        <h2>{{ monthLabel }}</h2>
+        <ion-button fill="clear" class="month-nav" aria-label="Bulan berikutnya" (click)="nextMonth()">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="weekday-row" role="list" aria-label="Hari dalam minggu">
+        <span *ngFor="let weekday of weekdays" role="listitem">{{ weekday }}</span>
+      </div>
+
+      <div class="calendar-grid" role="grid" aria-label="Kalender bulanan">
+        <button
+          type="button"
+          class="day-cell"
+          *ngFor="let day of calendarDays; trackBy: trackByDateKey"
+          [class.outside]="!day.isCurrentMonth"
+          [class.today]="day.isToday"
+          [class.selected]="day.isSelected"
+          (click)="selectDay(day)"
+        >
+          <span class="day-number">{{ day.dayNumber }}</span>
+          <span class="day-dot" *ngIf="day.hasItems" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="agenda-card">
+      <div class="agenda-head">
+        <p>Jadwal</p>
+        <h3>{{ selectedDateLabel }}</h3>
+      </div>
+
+      <ul class="agenda-list" role="list" *ngIf="selectedDateItems.length > 0">
+        <li class="agenda-row" *ngFor="let item of selectedDateItems">
+          <div class="agenda-time">{{ item.time }}</div>
+          <div class="agenda-body">
+            <strong [class.done]="isItemDone(item)">{{ item.title }}</strong>
+            <p>{{ item.category || 'Umum' }}</p>
+          </div>
+          <ion-badge [color]="isItemDone(item) ? 'success' : 'medium'">
+            {{ isItemDone(item) ? 'Selesai' : 'Aktif' }}
+          </ion-badge>
+        </li>
+      </ul>
+
+      <div class="agenda-empty" *ngIf="selectedDateItems.length === 0">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+        <p>Tidak ada jadwal di tanggal ini.</p>
+      </div>
+    </section>
+  </div>
+</ion-content>

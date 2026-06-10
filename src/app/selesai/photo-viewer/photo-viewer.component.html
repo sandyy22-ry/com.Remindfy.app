@@ -1,0 +1,16 @@
+<ion-header class="viewer-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="viewer-title">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="viewer-content" scrollX="true" scrollY="true">
+  <div class="photo-container">
+    <img [src]="photoDataUrl" alt="{{ title }}" class="photo-image" (click)="closeModal()" />
+  </div>
+</ion-content>

@@ -1,0 +1,91 @@
+
+<ion-content [fullscreen]="true" class="home-content">
+  <div class="home-shell">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">Dashboard</p>
+        <h1>Kelola aktivitas dengan mudah</h1>
+        <p class="hero-text"></p>
+      </div>
+      <div class="hero-pill">
+        <ion-icon name="sparkles-outline"></ion-icon>
+        <span>{{ completedCount }} selesai hari ini</span>
+      </div>
+    </section>
+
+    <section class="reminder-grid">
+      <article class="reminder-tile tile-link" routerLink="/hari-ini">
+        <div class="tile-top">
+          <div class="tile-icon icon-blue">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </div>
+          <strong>{{ todayCount }}</strong>
+        </div>
+        <h3>Hari Ini</h3>
+      </article>
+
+      <article class="reminder-tile tile-link" routerLink="/terjadwal">
+        <div class="tile-top">
+          <div class="tile-icon icon-red">
+            <ion-icon name="calendar-number-outline"></ion-icon>
+          </div>
+          <strong>{{ scheduledCount }}</strong>
+        </div>
+        <h3>Kalender</h3>
+      </article>
+
+      <article class="reminder-tile tile-link" routerLink="/semua">
+        <div class="tile-top">
+          <div class="tile-icon icon-gray">
+            <ion-icon name="file-tray-full-outline"></ion-icon>
+          </div>
+          <strong>{{ totalCount }}</strong>
+        </div>
+        <h3>Semua</h3>
+      </article>
+
+      <article class="reminder-tile tile-link tile-single" routerLink="/selesai">
+        <div class="tile-top">
+          <div class="tile-icon icon-soft">
+            <ion-icon name="checkmark-outline"></ion-icon>
+          </div>
+          <strong>{{ completedCount }}</strong>
+        </div>
+        <h3>Selesai</h3>
+      </article>
+    </section>
+
+    <section class="my-lists">
+      <h2>Daftar Saya</h2>
+      <ion-item class="list-row" lines="none" detail="true" routerLink="/pengingat">
+        <div class="list-icon" slot="start">
+          <ion-icon name="list-outline"></ion-icon>
+        </div>
+        <ion-label>Pengingat</ion-label>
+        <span class="list-count" slot="end">{{ totalCount }}</span>
+      </ion-item>
+    </section>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start" class="add-activity-fab">
+    <ion-fab-button aria-label="Tambah kegiatan" (click)="openComposer()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer class="bottom-actions">
+  <ion-toolbar>
+    <div class="action-row">
+      <ion-button fill="clear" class="left-action" (click)="openComposer()">
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+        Pengingat Baru
+      </ion-button>
+
+      <ion-button fill="clear" class="right-action" (click)="triggerTestNotification()">
+        Tes Notif 10 dtk
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+ 

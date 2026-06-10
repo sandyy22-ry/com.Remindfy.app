@@ -1,0 +1,189 @@
+:host {
+  display: block;
+}
+
+.reminder-header ion-toolbar {
+  --background: #000;
+  --color: #0a84ff;
+  --border-style: none;
+}
+
+.reminder-content {
+  --background: #000;
+  color: #f5f5f7;
+}
+
+.reminder-shell {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8px 16px 112px;
+  min-height: calc(100vh - 44px);
+}
+
+.reminder-shell h1 {
+  margin: 8px 0 14px;
+  color: #ffb340;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.empty-state {
+  min-height: 58vh;
+  display: grid;
+  place-items: center;
+}
+
+.empty-state p {
+  margin: 0;
+  color: rgba(148, 163, 184, 0.42);
+  font-size: 2.7rem;
+  letter-spacing: -0.03em;
+}
+
+.reminder-list {
+  background: transparent;
+  margin-top: 10px;
+}
+
+.reminder-item {
+  --background: transparent;
+  --color: #f5f5f7;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --min-height: 58px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.reminder-item h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.reminder-item p {
+  margin: 0;
+  color: rgba(148, 163, 184, 0.78);
+}
+
+.activity-thumb {
+  --size: 42px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.activity-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-footer ion-toolbar {
+  --background: #000;
+  --border-style: none;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 4px;
+  --padding-bottom: 22px;
+}
+
+.add-button {
+  --color: #ffb340;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.add-button ion-icon {
+  font-size: 2.2rem;
+}
+
+ion-modal.composer-modal {
+  --background: #1b1c22;
+  --border-radius: 20px 20px 0 0;
+}
+
+.composer-content {
+  --background: #1b1c22;
+}
+
+.composer-sheet {
+  padding: 10px 14px 16px;
+}
+
+.composer-head {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.composer-head h2 {
+  margin: 0;
+  color: #f5f5f7;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.composer-head ion-button:last-child {
+  justify-self: end;
+}
+
+.composer-card {
+  background: #2a2c33;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.modal-input {
+  --background: transparent;
+  --color: #f5f5f7;
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+  --min-height: 68px;
+}
+
+.modal-input ion-input {
+  --placeholder-color: rgba(148, 163, 184, 0.6);
+  font-size: 1.9rem;
+}
+
+.modal-input ion-select {
+  --placeholder-color: rgba(148, 163, 184, 0.6);
+  --color: #f5f5f7;
+  font-size: 1rem;
+}
+
+.note-input {
+  --min-height: 88px;
+}
+
+.line-item {
+  --background: transparent;
+  --color: #f5f5f7;
+  --padding-start: 12px;
+  --inner-padding-end: 10px;
+  --min-height: 70px;
+  font-size: 1.2rem;
+}
+
+.line-item ion-icon[slot='end'] {
+  color: rgba(148, 163, 184, 0.6);
+  font-size: 1.2rem;
+}
+
+.list-name {
+  color: rgba(148, 163, 184, 0.78);
+  margin-right: 8px;
+}
+
+@media (max-width: 720px) {
+  .reminder-shell h1 {
+    font-size: 3.2rem;
+  }
+
+  .empty-state p {
+    font-size: 2.2rem;
+  }
+}

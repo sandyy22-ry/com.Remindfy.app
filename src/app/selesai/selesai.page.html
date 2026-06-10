@@ -1,0 +1,88 @@
+<ion-header [translucent]="true" class="done-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Daftar"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="primary" aria-label="Menu lainnya">
+        <ion-icon name="ellipsis-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="done-content">
+  <div class="done-shell">
+    <h1>Selesai</h1>
+
+    <div class="done-meta">
+      <span>{{ completedCount }} Selesai</span>
+      <span class="dot">•</span>
+      <button type="button" class="clear-link" [disabled]="completedCount === 0" (click)="clearCompleted()">Bersihkan</button>
+    </div>
+
+    <div class="separator"></div>
+
+    <ion-list lines="none" class="done-list" *ngIf="completedReminders.length > 0">
+      <ion-item *ngFor="let reminder of completedReminders" class="done-item">
+        <ion-label>
+          <h3>{{ reminder.title }}</h3>
+          <p>{{ reminder.time }} · {{ reminder.category || 'Umum' }}</p>
+
+          <div class="done-photo" *ngIf="reminder.photoDataUrl">
+            <img 
+              [src]="reminder.photoDataUrl" 
+              alt="Foto kegiatan {{ reminder.title }}" 
+              (click)="viewPhoto(reminder.photoDataUrl, reminder.title)"
+              class="photo-clickable"
+            />
+            <ion-button type="button" size="small" fill="clear" color="medium" (click)="clearCompletedPhoto(reminder.id)">
+              Hapus Foto
+            </ion-button>
+          </div>
+
+          <div class="done-photo-actions">
+            <input
+              #cameraInput
+              class="hidden-file-input"
+              type="file"
+              accept="image/*"
+              capture="environment"
+              (change)="onCompletedPhotoSelected(reminder.id, $event)"
+            />
+            <input
+              #galleryInput
+              class="hidden-file-input"
+              type="file"
+              accept="image/*"
+              (change)="onCompletedPhotoSelected(reminder.id, $event)"
+            />
+
+            <ion-button type="button" size="small" fill="outline" (click)="cameraInput.click()">
+              Ambil Foto
+            </ion-button>
+            <ion-button type="button" size="small" fill="outline" (click)="galleryInput.click()">
+              Pilih Galeri
+            </ion-button>
+          </div>
+        </ion-label>
+
+        <ion-button
+          slot="end"
+          type="button"
+          fill="clear"
+          color="danger"
+          aria-label="Hapus pengingat"
+          (click)="removeCompletedReminder(reminder.id)"
+        >
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <div class="empty-state" *ngIf="completedReminders.length === 0">
+      <p>Tidak Ada Pengingat</p>
+    </div>
+  </div>
+</ion-content>
